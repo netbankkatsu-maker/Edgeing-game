@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>寸止めゲーム｜メトロノームでイクのを我慢する</title>
+<meta name="description" content="画面の指示とメトロノームの拍に従って、イクのを我慢する寸止め（エッジング）ゲーム。男性向け・女性向け対応。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='38' fill='%23ff7d95'/></svg>">
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<header class="site-header" id="siteHeader">
+  <a class="logo" href="#" id="logoHome"><span class="logo-num">100</span><span class="logo-word">Edge</span></a>
+  <div class="header-right">
+    <span class="lang-pill">🌐 JP</span>
+    <button class="menu-btn" id="menuBtn" aria-label="メニュー">☰</button>
+  </div>
+</header>
+<div class="news-bar" id="newsBar">
+  <button class="news-text" id="newsFemale">NEW 女性向け版ができました →</button>
+  <button class="news-close" id="newsClose" aria-label="閉じる">×</button>
+</div>
+
+<main>
+  <!-- ===== 年齢確認（1枚目の見た目） ===== -->
+  <section id="view-age" class="view">
+    <div class="dots" aria-hidden="true"><span class="dot dot-green"></span><span class="dot dot-yellow"></span><span class="dot dot-red"></span></div>
+    <p class="kicker">EDGE GAME ・ 日本語</p>
+    <h1 class="title-serif">寸止めゲーム</h1>
+    <p class="subtitle-serif">画面の指示に従って、イクのを我慢する</p>
+
+    <div class="card age-card">
+      <span class="badge-18">18+</span>
+      <h2 class="age-q">寸止め、耐えられる？</h2>
+      <div class="audience-switch" role="group" aria-label="対象を選ぶ">
+        <button class="aud-btn" data-aud="male">男性向け</button>
+        <button class="aud-btn" data-aud="female">女性向け</button>
+      </div>
+      <button class="btn-primary btn-xl" id="ageStart">18歳以上です、はじめる →</button>
+      <p class="note">痛みや不調を感じたらすぐ中止。医療目的ではありません。</p>
+      <a class="minor-link" href="https://www.google.co.jp/" rel="noopener">18歳未満の方はこちら</a>
+    </div>
+  </section>
+
+  <!-- ===== 設定（2〜6枚目の内容） ===== -->
+  <section id="view-settings" class="view hidden">
+    <div class="dots" aria-hidden="true"><span class="dot dot-green"></span><span class="dot dot-yellow"></span><span class="dot dot-red"></span></div>
+    <p class="kicker">EDGE GAME ・ 日本語</p>
+    <h1 class="title-serif">寸止めゲーム</h1>
+    <p class="subtitle-serif">画面の指示に従って、イクのを我慢する</p>
+
+    <div class="card">
+      <h2 class="card-title">設定</h2>
+      <p class="summary" id="summaryLine">10分 ・ ふつう ・ 抽選 ・ 指示 0種類</p>
+
+      <div class="notice" id="noticeBox">
+        <div class="notice-head"><span>ご要望から</span><button class="notice-close" id="noticeClose" aria-label="閉じる">×</button></div>
+        <p>自分の画像でも遊べるようになりました。写真やGIFを選ぶと、スライドショーで流れます。</p>
+        <button class="btn-ghost-pink" id="noticeGotoMedia">動画・画像タブで選ぶ</button>
+      </div>
+
+      <button class="btn-primary btn-xl" data-start>はじめる</button>
+
+      <label class="search-box">
+        <span>🔍</span>
+        <input type="search" id="settingSearch" placeholder="設定をさがす（例： 乳首 ・ 左手）">
+      </label>
+
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="play">遊び方</button>
+        <button class="tab" data-tab="inst">指示</button>
+        <button class="tab" data-tab="media">動画・画像</button>
+        <button class="tab" data-tab="sound">音・声</button>
+        <button class="tab" data-tab="other">その他</button>
+      </nav>
+
+      <!-- 遊び方タブ -->
+      <div class="tab-panel" data-panel="play">
+        <div class="group searchable" data-keywords="おすすめ プリセット はじめて 標準 長め">
+          <h3>おすすめ</h3>
+          <div class="chips" id="presetChips">
+            <button class="chip" data-preset="beginner">はじめて</button>
+            <button class="chip selected" data-preset="standard">標準</button>
+            <button class="chip" data-preset="long">じっくり長め</button>
+          </div>
+          <p class="hint" id="presetHint">10分 ・ ふつう ・ 抽選（既定）</p>
+        </div>
+
+        <div class="group searchable" data-keywords="だれ向け 男性 女性 男性向け 女性向け">
+          <h3>だれ向け</h3>
+          <div class="chips chips-2">
+            <button class="chip aud-chip" data-aud="male">男性向け</button>
+            <button class="chip aud-chip" data-aud="female">女性向け</button>
+          </div>
+          <p class="hint">切り替えると指示の内容と最後の文言が変わります。専用ページ： <a href="male.html">男性向けページ</a> ／ <a href="female.html">女性向けページ</a></p>
+        </div>
+
+        <div class="group searchable" data-keywords="時間 分 ランダム 自分で決める">
+          <h3>時間</h3>
+          <div class="chips" id="durationChips">
+            <button class="chip" data-min="3">3分</button>
+            <button class="chip" data-min="5">5分</button>
+            <button class="chip selected" data-min="10">10分</button>
+            <button class="chip" data-min="15">15分</button>
+            <button class="chip" data-min="20">20分</button>
+            <button class="chip" data-min="30">30分</button>
+            <button class="chip" data-min="custom">自分で決める</button>
+            <button class="chip" data-min="random">ランダム</button>
+          </div>
+          <div class="inline-inputs hidden" id="customMinRow">
+            <input type="number" id="customMin" min="1" max="120" value="12"><span>分</span>
+          </div>
+        </div>
+
+        <div class="group searchable" data-keywords="難易度 やさしい ふつう きびしい 鬼 確率">
+          <h3>難易度</h3>
+          <div class="chips" id="difficultyChips">
+            <button class="chip" data-diff="easy">やさしい</button>
+            <button class="chip selected" data-diff="normal">ふつう</button>
+            <button class="chip" data-diff="hard">きびしい</button>
+            <button class="chip" data-diff="oni">鬼</button>
+          </div>
+          <div class="ratio-bar" id="ratioBar"><span class="r-stroke"></span><span class="r-slow"></span><span class="r-stop"></span></div>
+          <p class="hint" id="difficultyHint">しごく6割 ・ ゆっくり2割 ・ 触らない2割。最後にイケる確率 70%</p>
+        </div>
+
+        <div class="group searchable" data-keywords="最後 抽選 許可 お預け 射精 連続 延長戦 手放し">
+          <h3>最後</h3>
+          <div class="chips" id="endingChips">
+            <button class="chip selected" data-ending="lottery">抽選</button>
+            <button class="chip" data-ending="allow">必ずイッていい</button>
+            <button class="chip" data-ending="deny">必ずお預け</button>
+            <button class="chip male-only" data-ending="handsfree">手放し射精</button>
+            <button class="chip" data-ending="continuous">連続（何度でも）</button>
+            <button class="chip" data-ending="extension">延長戦</button>
+          </div>
+          <p class="hint">難易度ごとの確率で「イッていい」か「お預け」。寸止め1回ごとに確率 +5%（最大 +20%）</p>
+          <div class="toggle-row">
+            <div>
+              <p class="toggle-title" id="handsFreeTitle">許可が出たら「手放し射精」で終わる</p>
+              <p class="hint" id="handsFreeDesc">出していいが、出る瞬間に手を離して、触らずに垂らす</p>
+            </div>
+            <label class="switch"><input type="checkbox" id="handsFreeToggle"><span></span></label>
+          </div>
+        </div>
+
+        <div class="group searchable" data-keywords="イッていい 時間 秒 白いバー 許可">
+          <h3>「イッていい」の時間</h3>
+          <div class="chips" id="allowWindowChips">
+            <button class="chip" data-sec="5">5秒</button>
+            <button class="chip selected" data-sec="10">10秒</button>
+            <button class="chip" data-sec="20">20秒</button>
+            <button class="chip" data-sec="30">30秒</button>
+            <button class="chip" data-sec="45">45秒</button>
+            <button class="chip" data-sec="60">60秒</button>
+          </div>
+          <p class="hint">最後に許可が出たあとの、白いバーの長さ。既定は10秒</p>
+        </div>
+
+        <div class="group searchable" data-keywords="寸止め 待つ 時間 休み ランダム 固定 秒">
+          <h3>寸止めのあとに待つ時間</h3>
+          <div class="chips chips-2" id="restModeChips">
+            <button class="chip selected" data-restmode="random">ランダム</button>
+            <button class="chip" data-restmode="fixed">固定</button>
+          </div>
+          <p class="hint" id="restHint">「寸止めした」のあとに待つ時間が、8〜16秒の間で毎回変わる</p>
+          <div class="chips" id="restRangeChips">
+            <button class="chip selected" data-range="8,16">8〜16秒</button>
+            <button class="chip" data-range="10,40">10〜40秒</button>
+            <button class="chip" data-range="20,60">20〜60秒</button>
+          </div>
+          <div class="inline-inputs">
+            <input type="number" id="restMin" min="3" max="300" value="8"><span>〜</span>
+            <input type="number" id="restMax" min="3" max="300" value="16"><span>秒</span>
+          </div>
+        </div>
+
+        <div class="group searchable" data-keywords="指示 長さ 標準 長め とても長め">
+          <h3>指示の長さ</h3>
+          <div class="chips chips-2" id="instLenChips">
+            <button class="chip selected" data-instlen="standard">標準</button>
+            <button class="chip" data-instlen="long">長め（約1〜2分）</button>
+            <button class="chip" data-instlen="verylong">とても長め（約2〜5分）</button>
+          </div>
+          <p class="hint">しごく指示が長く続きます。赤（触らない）と、秒数が書かれた指示は変わりません。ゲームの終了時刻も同じです。</p>
+        </div>
+      </div>
+
+      <!-- 指示タブ -->
+      <div class="tab-panel hidden" data-panel="inst">
+        <p class="hint">ゲーム中に出る指示の一覧です。タップで ON／OFF できます（最低1種類は必要です）。</p>
+        <div id="instructionList" class="inst-list"></div>
+      </div>
+
+      <!-- 動画・画像タブ -->
+      <div class="tab-panel hidden" data-panel="media">
+        <div class="group">
+          <h3>自分の画像・動画で遊ぶ</h3>
+          <p class="hint">写真やGIF、動画を選ぶと、ゲーム中にスライドショーで流れます。ファイルは端末の外に送信されません。</p>
+          <label class="btn-ghost-pink file-btn">画像・動画を選ぶ
+            <input type="file" id="mediaInput" accept="image/*,video/*" multiple hidden>
+          </label>
+          <p class="hint" id="mediaCount">未選択</p>
+          <div class="inline-inputs">
+            <span>切り替え</span><input type="number" id="slideSec" min="3" max="60" value="8"><span>秒ごと</span>
+          </div>
+          <div class="toggle-row">
+            <p class="toggle-title">ゲーム中にスライドショーを出す</p>
+            <label class="switch"><input type="checkbox" id="slideToggle" checked><span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 音・声タブ -->
+      <div class="tab-panel hidden" data-panel="sound">
+        <div class="group">
+          <h3>メトロノーム</h3>
+          <div class="toggle-row">
+            <p class="toggle-title">拍の音を出す</p>
+            <label class="switch"><input type="checkbox" id="metroToggle" checked><span></span></label>
+          </div>
+          <div class="inline-inputs"><span>音量</span><input type="range" id="metroVolume" min="0" max="100" value="70"></div>
+          <div class="chips" id="metroSoundChips">
+            <button class="chip selected" data-sound="click">クリック</button>
+            <button class="chip" data-sound="beep">ビープ</button>
+            <button class="chip" data-sound="wood">ウッド</button>
+          </div>
+          <p class="hint">速い指示は速い拍、ゆっくりの指示は遅い拍になります。止まれの間は音が止まります。</p>
+        </div>
+        <div class="group">
+          <h3>声・振動</h3>
+          <div class="toggle-row">
+            <p class="toggle-title">指示を声で読み上げる</p>
+            <label class="switch"><input type="checkbox" id="voiceToggle"><span></span></label>
+          </div>
+          <div class="toggle-row">
+            <p class="toggle-title">指示が変わるときに振動させる</p>
+            <label class="switch"><input type="checkbox" id="vibeToggle" checked><span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- その他タブ -->
+      <div class="tab-panel hidden" data-panel="other">
+        <div class="group box">
+          <h3>2人で同時に遊ぶ</h3>
+          <p class="hint">同じ指示が同じタイミングで2つの端末に出ます。リンクを相手に送ると、2分後に両方で自動で始まります。</p>
+          <button class="btn-ghost-pink" id="makeSyncLink">2人用のリンクを作る</button>
+          <p class="link-out" id="syncLinkOut"></p>
+        </div>
+        <div class="group box">
+          <h3>ほかの動画を見ながら遊ぶ</h3>
+          <p class="hint">指示を小さな窓に出します。ほかのサイトで動画を見ながら、そのまま続けられます。</p>
+          <label class="check-row"><input type="checkbox" id="pipGuideToggle" checked> 始めたら小窓の案内を出す</label>
+          <p class="hint">ゲーム中の「小窓」ボタンで、対応ブラウザではピクチャ・イン・ピクチャで指示だけを切り出せます。</p>
+        </div>
+        <div class="group box">
+          <h3>遠隔で指示してもらう</h3>
+          <p class="hint">相手にリンクを送ると、相手がボタンで指示を出せます。相手には、いまの指示・残り時間・寸止めの回数が見えます。最後にイっていいかも相手が決めます。</p>
+          <button class="btn-ghost-pink" id="makeRemoteLink">相手に送るリンクを作る</button>
+          <p class="link-out" id="remoteLinkOut"></p>
+          <p class="hint">※ この版の遠隔操作は、同じブラウザの別タブ／別ウィンドウ間でつながります。別端末からの本格運用にはサーバー連携が必要です（README参照）。</p>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-xl" data-start>はじめる</button>
+    </div>
+
+    <!-- 遊び方の説明（7枚目） -->
+    <section class="explain">
+      <ul class="legend">
+        <li><span class="dot dot-green"></span>画面が緑のときは、しごいていい。光と音の拍に手を合わせる</li>
+        <li><span class="dot dot-yellow"></span>黄色は、ゆっくり・焦らす</li>
+        <li><span class="dot dot-red"></span>赤になったら、手を離す。終わるまで触らない</li>
+        <li><span class="dot dot-pink"></span><span id="legendNipple">乳首だけ</span></li>
+        <li><span class="dot dot-blue"></span><span id="legendSpecial">亀頭だけ</span></li>
+      </ul>
+      <p class="hint" id="legendNote">時間が来る前に出したら負け。寸止めできたら「寸止めした」を押す（1回ごとに最後の許可率 +5%）。許可が出たら10秒以内に。いまの設定の許可率は <span id="legendRate">70%</span> から。</p>
+      <p class="explain-text">画面が数秒ごとに「速く」「ゆっくり」「手を離せ」と指示を出します。そのとおりにしごいて、時間が来るまでイカずに耐える。時間が来たら抽選で、「イッていい」の許可が出るか、お預けになるか。要するに、いつ出していいかを画面に決めてもらう一人遊びで、海外では「エッジング」として定番になっています。</p>
+      <div class="chips">
+        <button class="chip aud-chip" data-aud="female">女性向け →</button>
+        <button class="chip aud-chip" data-aud="male">男性向け →</button>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== 同期リンク待機 ===== -->
+  <section id="view-wait" class="view hidden">
+    <div class="card center">
+      <h2 class="card-title">2人プレイ待機中</h2>
+      <p class="hint">両方の端末で、同じタイミングで自動で始まります。</p>
+      <p class="wait-count" id="waitCount">--</p>
+      <button class="btn-ghost" id="waitCancel">やめる</button>
+    </div>
+  </section>
+
+  <!-- ===== 遠隔コントローラー ===== -->
+  <section id="view-remote" class="view hidden">
+    <div class="card">
+      <h2 class="card-title">遠隔コントローラー</h2>
+      <p class="hint">相手の画面に指示を送ります（同じブラウザの別タブ／別ウィンドウで開かれている相手画面とつながります）。</p>
+      <p class="remote-status" id="remoteStatus">相手の状態： 接続待ち…</p>
+      <div class="remote-grid">
+        <button class="btn-remote" data-cmd="fast">速く</button>
+        <button class="btn-remote" data-cmd="slow">ゆっくり</button>
+        <button class="btn-remote" data-cmd="stop">止まれ</button>
+        <button class="btn-remote" data-cmd="nipple">乳首だけ</button>
+        <button class="btn-remote" data-cmd="special">先だけ</button>
+        <button class="btn-remote" data-cmd="resume">再開（自動）</button>
+        <button class="btn-remote ok" data-cmd="allow">イッていい</button>
+        <button class="btn-remote ng" data-cmd="deny">お預けで終わり</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ゲーム画面 ===== -->
+  <section id="view-game" class="view hidden">
+    <div class="stage" id="stage">
+      <div class="stage-top">
+        <span id="gameClock">00:00 / 10:00</span>
+        <span id="gameMeta">寸止め 0回 ・ 許可率 70%</span>
+      </div>
+      <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+      <div class="slide-wrap hidden" id="slideWrap"><img id="slideImg" alt=""><video id="slideVideo" muted loop playsinline class="hidden"></video></div>
+
+      <div class="pulse-dot" id="pulseDot"></div>
+      <p class="phase-label" id="phaseLabel">準備</p>
+      <h2 class="phase-text" id="phaseText">まもなく始まります</h2>
+      <p class="phase-sub" id="phaseSub"></p>
+      <div class="phase-bar"><div class="phase-bar-fill" id="phaseBarFill"></div></div>
+      <p class="phase-count" id="phaseCount"></p>
+
+      <div class="finale hidden" id="finale">
+        <h2 class="finale-text" id="finaleText">イッていい</h2>
+        <div class="finale-bar"><div class="finale-bar-fill" id="finaleBarFill"></div></div>
+        <p class="finale-count" id="finaleCount"></p>
+      </div>
+
+      <div class="game-actions">
+        <button class="btn-edge" id="edgeBtn" disabled>寸止めした</button>
+        <button class="btn-ghost" id="pauseBtn">一時停止</button>
+        <button class="btn-ghost" id="pipBtn">小窓</button>
+        <button class="btn-ghost danger" id="quitBtn">やめる</button>
+      </div>
+      <p class="hint center" id="pipHint"></p>
+    </div>
+  </section>
+
+  <!-- ===== 結果 ===== -->
+  <section id="view-result" class="view hidden">
+    <div class="card center">
+      <p class="kicker" id="resultKicker">結果</p>
+      <h2 class="result-title" id="resultTitle">お預け</h2>
+      <p class="result-text" id="resultText"></p>
+      <p class="summary" id="resultStats"></p>
+      <div class="result-actions">
+        <button class="btn-primary" id="extendBtn" >延長戦（+3分）</button>
+        <button class="btn-primary hidden" id="againBtn">もう一度</button>
+        <button class="btn-ghost" id="backSettingsBtn">設定に戻る</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast hidden" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
