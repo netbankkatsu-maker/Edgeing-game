@@ -13,71 +13,71 @@ const DIFF = {
 const ENDINGS = { lottery:'抽選', allow:'必ずイッていい', deny:'必ずお預け', handsfree:'手放し射精', continuous:'連続（何度でも）', extension:'延長戦' };
 const INSTLEN = { standard:[8,20], long:[60,120], verylong:[120,300] };
 
-/* ---------- 指示プール ---------- */
+/* ---------- 指示プール（男性向け＝女性の命令口調／女性向け＝男性の命令口調） ---------- */
 const POOL = {
 male: [
-  {type:'stroke', text:'速くしごいて', sub:'光と音の拍に手を合わせて'},
-  {type:'stroke', text:'もっと速く', sub:'テンポを上げて。でもイッちゃダメ'},
-  {type:'stroke', text:'根元から先まで大きくしごく', sub:'ストロークは大きく、速く'},
-  {type:'stroke', text:'両手で包んでしごく', sub:'両手で包み込んで上下に'},
-  {type:'stroke', text:'利き手で速く', sub:'いつもの手で、いつもより速く'},
-  {type:'stroke', text:'左手だけ', sub:'左手だけでしごく'},
-  {type:'stroke', text:'右手だけ', sub:'右手だけでしごく'},
-  {type:'stroke', text:'強く握って速く', sub:'握りは強めに、拍に合わせて'},
-  {type:'stroke', text:'ゆるく握って速く滑らせる', sub:'握りはゆるく、滑らかに速く'},
-  {type:'stroke', text:'上下に大きく、速く', sub:'大胆に、でも寸止めは守って'},
-  {type:'slow', text:'ゆっくりしごく', sub:'焦らして。1拍に1往復'},
-  {type:'slow', text:'とてもゆっくり', sub:'止まりそうなくらいゆっくり'},
-  {type:'slow', text:'ゆっくりひねるように', sub:'ひねりを加えて、焦らして'},
-  {type:'slow', text:'先をゆっくり撫で回す', sub:'ゆっくり、ねっとりと'},
-  {type:'slow', text:'根元をゆっくり握る', sub:'握っては離し、焦らして'},
-  {type:'slow', text:'寸止めギリギリでゆっくり', sub:'イク寸前の感覚を保って'},
-  {type:'stop', text:'手を離して', sub:'終わるまで触らない'},
-  {type:'stop', text:'寸止め。手を離して耐えて', sub:'耐えられたら「寸止めした」を押して'},
-  {type:'stop', text:'触らない。深呼吸', sub:'息を整えて、感覚が引くのを待つ'},
-  {type:'stop', text:'手を頭の後ろに', sub:'絶対に触らない'},
-  {type:'stop', text:'そのまま固まって', sub:'動かない。触らない'},
-  {type:'nipple', text:'乳首だけ', sub:'本体には触らない。乳首だけで焦らす'},
-  {type:'nipple', text:'乳首をつまんで', sub:'つまんで転がして。本体は触らない'},
-  {type:'nipple', text:'両方の乳首を同時に', sub:'両手で乳首だけ'},
-  {type:'nipple', text:'乳首を爪先で弾く', sub:'軽く弾いて、焦らして'},
-  {type:'special', text:'亀頭だけを撫でる', sub:'先だけを集中して'},
-  {type:'special', text:'先だけを指でくるくる', sub:'円を描くように、先だけ'},
-  {type:'special', text:'裏筋だけをなぞる', sub:'弱いところだけを、丁寧に'},
-  {type:'special', text:'亀頭を包んで回す', sub:'掌で包んで、回すように'},
-  {type:'special', text:'先だけを軽く叩く', sub:'リズムよく、先だけ'},
+  {type:'stroke', text:'速くしごきなさい', sub:'拍に合わせて、速くよ'},
+  {type:'stroke', text:'もっと速くしなさい', sub:'テンポを上げて。イッちゃダメ'},
+  {type:'stroke', text:'根元から先まで、大きくしごきなさい', sub:'大きく、速くよ'},
+  {type:'stroke', text:'両手で包んでしごきなさい', sub:'両手で包んで、上下に動かすの'},
+  {type:'stroke', text:'利き手で速くしごきなさい', sub:'いつもの手で。もっと速く'},
+  {type:'stroke', text:'左手だけでしごきなさい', sub:'左手だけよ。右手はダメ'},
+  {type:'stroke', text:'右手だけでしごきなさい', sub:'右手だけよ。左手はダメ'},
+  {type:'stroke', text:'強く握って、速くしごきなさい', sub:'握りは強めに。拍に合わせて'},
+  {type:'stroke', text:'ゆるく握って、速く滑らせなさい', sub:'ゆるく、滑らかに、速くよ'},
+  {type:'stroke', text:'上下に大きく、速くしごきなさい', sub:'大胆にやって。でも寸止めは守るのよ'},
+  {type:'slow', text:'ゆっくりしごきなさい', sub:'焦らすの。1拍に1往復よ'},
+  {type:'slow', text:'もっとゆっくり', sub:'止まりそうなくらい、ゆっくりよ'},
+  {type:'slow', text:'ゆっくりひねりながらしごきなさい', sub:'ひねりを加えて、焦らして'},
+  {type:'slow', text:'先をゆっくり撫で回しなさい', sub:'ゆっくり、ねっとりとよ'},
+  {type:'slow', text:'根元をゆっくり握りなさい', sub:'握っては離して、焦らすの'},
+  {type:'slow', text:'寸止めギリギリで、ゆっくりしごきなさい', sub:'イク寸前の感覚を保つのよ'},
+  {type:'stop', text:'手を離しなさい', sub:'終わるまで触っちゃダメ'},
+  {type:'stop', text:'寸止めよ。手を離して耐えなさい', sub:'耐えられたら「寸止めした」を押しなさい'},
+  {type:'stop', text:'触らないで。深呼吸しなさい', sub:'息を整えて、引くのを待ちなさい'},
+  {type:'stop', text:'手は頭の後ろ', sub:'絶対に触らないで'},
+  {type:'stop', text:'そのまま固まっていなさい', sub:'動かない。触らない。分かった？'},
+  {type:'nipple', text:'乳首だけ触りなさい', sub:'本体には触らないで。乳首だけで焦らすの'},
+  {type:'nipple', text:'乳首をつまみなさい', sub:'つまんで転がして。本体はダメ'},
+  {type:'nipple', text:'両方の乳首を同時に触りなさい', sub:'両手で乳首だけよ'},
+  {type:'nipple', text:'乳首を爪先で弾きなさい', sub:'軽く弾いて、焦らして'},
+  {type:'special', text:'亀頭だけを撫でなさい', sub:'先だけに集中よ'},
+  {type:'special', text:'先だけを指でくるくる回しなさい', sub:'円を描くの。先だけよ'},
+  {type:'special', text:'裏筋だけをなぞりなさい', sub:'弱いところだけ、丁寧にね'},
+  {type:'special', text:'亀頭を包んで回しなさい', sub:'掌で包んで、回すの'},
+  {type:'special', text:'先だけを軽く叩きなさい', sub:'リズムよく、先だけよ'},
 ],
 female: [
-  {type:'stroke', text:'速く擦って', sub:'光と音の拍に指を合わせて'},
-  {type:'stroke', text:'もっと速く、円を描いて', sub:'テンポを上げて。でもイッちゃダメ'},
-  {type:'stroke', text:'指全体で大きく擦る', sub:'大きく円を描いて、速く'},
-  {type:'stroke', text:'二本指で速く上下に', sub:'拍に合わせて上下に'},
-  {type:'stroke', text:'利き手で速く', sub:'いつもの手で、いつもより速く'},
-  {type:'stroke', text:'左手だけ', sub:'左手だけで擦る'},
-  {type:'stroke', text:'右手だけ', sub:'右手だけで擦る'},
-  {type:'stroke', text:'強めに圧をかけて速く', sub:'圧は強めに、拍に合わせて'},
-  {type:'stroke', text:'軽く触れて速く滑らせる', sub:'表面を滑らかに、速く'},
-  {type:'stroke', text:'おもちゃを当てて速く', sub:'使う場合は一番弱い振動から'},
-  {type:'slow', text:'ゆっくり擦って', sub:'焦らして。1拍に1往復'},
-  {type:'slow', text:'とてもゆっくり円を描く', sub:'止まりそうなくらいゆっくり'},
-  {type:'slow', text:'まわりをゆっくりなぞる', sub:'中心は避けて、焦らして'},
-  {type:'slow', text:'圧をかけては離して', sub:'押して、離して、焦らして'},
-  {type:'slow', text:'入口のまわりをゆっくり', sub:'ゆっくり、ねっとりと'},
-  {type:'slow', text:'寸止めギリギリでゆっくり', sub:'イク寸前の感覚を保って'},
-  {type:'stop', text:'手を離して', sub:'終わるまで触らない'},
-  {type:'stop', text:'寸止め。手を離して耐えて', sub:'耐えられたら「寸止めした」を押して'},
-  {type:'stop', text:'触らない。深呼吸', sub:'息を整えて、感覚が引くのを待つ'},
-  {type:'stop', text:'手を頭の後ろに', sub:'絶対に触らない'},
-  {type:'stop', text:'そのまま固まって', sub:'動かない。触らない'},
-  {type:'nipple', text:'乳首だけ', sub:'下には触らない。乳首だけで焦らす'},
-  {type:'nipple', text:'乳首をつまんで', sub:'つまんで転がして。下は触らない'},
-  {type:'nipple', text:'両方の乳首を同時に', sub:'両手で乳首だけ'},
-  {type:'nipple', text:'乳首を爪先で弾く', sub:'軽く弾いて、焦らして'},
-  {type:'special', text:'クリだけを撫でる', sub:'一点だけを集中して'},
-  {type:'special', text:'クリを指でくるくる', sub:'小さく円を描いて'},
-  {type:'special', text:'クリの左側だけ', sub:'弱い側だけを、丁寧に'},
-  {type:'special', text:'フードの上から先だけ', sub:'直接触らず、上から'},
-  {type:'special', text:'先だけを軽く弾く', sub:'リズムよく、先だけ'},
+  {type:'stroke', text:'速く擦れ', sub:'拍に合わせて、速くだ'},
+  {type:'stroke', text:'もっと速く、円を描け', sub:'テンポを上げろ。イくなよ'},
+  {type:'stroke', text:'指全体で大きく擦れ', sub:'大きく円を描いて、速く'},
+  {type:'stroke', text:'二本指で速く上下に動かせ', sub:'拍に合わせて上下だ'},
+  {type:'stroke', text:'利き手で速く擦れ', sub:'いつもの手で。もっと速く'},
+  {type:'stroke', text:'左手だけで擦れ', sub:'左手だけだ。右手は使うな'},
+  {type:'stroke', text:'右手だけで擦れ', sub:'右手だけだ。左手は使うな'},
+  {type:'stroke', text:'強めに圧をかけて速く擦れ', sub:'圧は強めに。拍に合わせろ'},
+  {type:'stroke', text:'軽く触れて速く滑らせろ', sub:'表面を滑らかに、速くだ'},
+  {type:'stroke', text:'おもちゃを当てて速くしろ', sub:'使うなら一番弱い振動からだぞ'},
+  {type:'slow', text:'ゆっくり擦れ', sub:'焦らせ。1拍に1往復だ'},
+  {type:'slow', text:'もっとゆっくり、円を描け', sub:'止まりそうなくらいゆっくりだ'},
+  {type:'slow', text:'まわりをゆっくりなぞれ', sub:'中心は避けろ。焦らすんだ'},
+  {type:'slow', text:'圧をかけては離せ', sub:'押して、離して、焦らせ'},
+  {type:'slow', text:'入口のまわりをゆっくり触れ', sub:'ゆっくり、ねっとりとだ'},
+  {type:'slow', text:'寸止めギリギリでゆっくり擦れ', sub:'イク寸前の感覚を保て'},
+  {type:'stop', text:'手を離せ', sub:'終わるまで触るな'},
+  {type:'stop', text:'寸止めだ。手を離して耐えろ', sub:'耐えたら「寸止めした」を押せ'},
+  {type:'stop', text:'触るな。深呼吸しろ', sub:'息を整えて、引くのを待て'},
+  {type:'stop', text:'手は頭の後ろだ', sub:'絶対に触るな'},
+  {type:'stop', text:'そのまま固まってろ', sub:'動くな。触るな'},
+  {type:'nipple', text:'乳首だけ触れ', sub:'下には触るな。乳首だけで焦らせ'},
+  {type:'nipple', text:'乳首をつまめ', sub:'つまんで転がせ。下はダメだ'},
+  {type:'nipple', text:'両方の乳首を同時に触れ', sub:'両手で乳首だけだ'},
+  {type:'nipple', text:'乳首を爪先で弾け', sub:'軽く弾いて、焦らせ'},
+  {type:'special', text:'クリだけを撫でろ', sub:'一点だけに集中しろ'},
+  {type:'special', text:'クリを指でくるくる回せ', sub:'小さく円を描け'},
+  {type:'special', text:'クリの左側だけを触れ', sub:'弱い側だけだ。丁寧に'},
+  {type:'special', text:'フードの上から先だけ触れ', sub:'直接触るな。上からだ'},
+  {type:'special', text:'先だけを軽く弾け', sub:'リズムよく、先だけだ'},
 ]};
 
 /* ---------- 状態 ---------- */
@@ -447,14 +447,15 @@ function runFinale(handsFreeFinish){
   game.running = false;
   clearInterval(game.beatTimer);
   ['pulseDot'].forEach(id=>$('#'+id).classList.add('hidden'));
+  const maleCmd = state.audience==='male';
   $('#phaseLabel').textContent = '許可';
-  $('#phaseText').textContent = state.audience==='male' ? 'イッていい！' : 'イッていい！';
+  $('#phaseText').textContent = maleCmd ? 'イッていいわよ！' : 'イッていいぞ！';
   $('#phaseSub').textContent = handsFreeFinish
-    ? (state.audience==='male' ? '手を離して出して。触らずに垂らす' : '手を離してイって。触らずに震えて')
-    : `${state.allowWindowSec}秒以内にイって`;
+    ? (maleCmd ? '手を離して出しなさい。触らずに垂らすのよ' : '手を離してイけ。触らずに震えてろ')
+    : (maleCmd ? `${state.allowWindowSec}秒以内にイきなさい` : `${state.allowWindowSec}秒以内にイけ`);
   $('#phaseCount').textContent='';
   const fin = $('#finale'); fin.classList.remove('hidden');
-  $('#finaleText').textContent = handsFreeFinish ? '手放しでイッていい' : 'イッていい';
+  $('#finaleText').textContent = handsFreeFinish ? (maleCmd ? '手放しで出しなさい' : '手放しでイけ') : (maleCmd ? 'イッていいわよ' : 'イッていいぞ');
   const t0 = performance.now(); const total = state.allowWindowSec*1000;
   game.finaleTimer = setInterval(()=>{
     const left = total - (performance.now()-t0);
@@ -463,7 +464,7 @@ function runFinale(handsFreeFinish){
     if(state.metro && left>0 && Math.ceil(left/1000)!==Math.ceil((left+100)/1000)) click();
     if(left<=0){ clearInterval(game.finaleTimer); showResult(true, handsFreeFinish); }
   }, 100);
-  speak('イッていい');
+  speak(state.audience==='male' ? 'イッていいわよ' : 'イッていいぞ');
   if(state.vibe && navigator.vibrate) navigator.vibrate([200,80,200]);
 }
 function showResult(allowed, handsFreeFinish){
@@ -472,18 +473,19 @@ function showResult(allowed, handsFreeFinish){
   $('#resultStats').textContent = `時間 ${fmt(game.totalSec)} ・ 寸止め ${game.edges}回 ・ 最終許可率 ${rate}%`;
   $('#againBtn').classList.toggle('hidden', !(allowed && state.ending==='continuous'));
   $('#extendBtn').classList.toggle('hidden', allowed);
+  const maleVoice = state.audience==='male';
   if(allowed){
     $('#resultKicker').textContent = '許可';
-    $('#resultTitle').textContent = 'イッていい';
+    $('#resultTitle').textContent = maleVoice ? 'イッていいわよ' : 'イッていいぞ';
     $('#resultText').textContent = handsFreeFinish
-      ? '許可が出ました。最後は手を離したまま、思い切りイってください。おつかれさまでした。'
-      : '許可が出ました。よく耐えました。おつかれさまでした。';
+      ? (maleVoice ? '許可よ。最後は手を離したまま、思い切り出しなさい。よく頑張ったわね。' : '許可だ。最後は手を離したまま、思い切りイけ。よく頑張ったな。')
+      : (maleVoice ? '許可よ。よく耐えたわ。思い切りイきなさい。おつかれさま。' : '許可だ。よく耐えた。思い切りイけ。おつかれさま。');
   } else {
     $('#resultKicker').textContent = '結果';
     $('#resultTitle').textContent = 'お預け';
     $('#resultText').textContent = state.ending==='extension' && !game.extended
-      ? '抽選は「お預け」。ただし延長戦モードです。下のボタンで +3分 の延長戦に入れます。'
-      : '今回は許可が出ませんでした。ここで終わるのが寸止めです。物足りなければ延長戦で確率を上げ直せます。';
+      ? (maleVoice ? '抽選はお預け。でも延長戦モードよ。下のボタンで +3分 の延長戦に入りなさい。' : '抽選はお預けだ。ただし延長戦モードだ。下のボタンで +3分 の延長戦に入れ。')
+      : (maleVoice ? '今回は許可しないわ。ここで終わり。寸止めはそういうものでしょ。物足りなければ延長戦で確率を上げ直しなさい。' : '今回は許可しない。ここで終わりだ。寸止めはそういうものだ。物足りなければ延長戦で確率を上げ直せ。');
   }
   bc?.postMessage({kind:'status', phase: allowed?'許可：イッていい':'結果：お預け', remainSec:0, edges:game.edges});
 }
